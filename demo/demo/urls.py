@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.views.generic import RedirectView, TemplateView
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
-
+from .views import ExtendView
 schema_view = get_schema_view(
     openapi.Info(
         title='API Docs',
@@ -15,6 +15,7 @@ urlpatterns = [
     re_path(r'^$', TemplateView.as_view(template_name="home.html"), name='home'),
     re_path(r'^signup/$', TemplateView.as_view(template_name="signup.html"),
         name='signup'),
+    re_path(r'^extend/$',ExtendView.as_view(),name='extend'),
     re_path(r'^email-verification/$',
         TemplateView.as_view(template_name="email_verification.html"),
         name='email-verification'),
